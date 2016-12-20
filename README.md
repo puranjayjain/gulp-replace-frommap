@@ -35,7 +35,7 @@ Its an object to be passed along with the constructor of the plugin
  *  
  *  before -> class="
  *  after  -> "
- *  map    -> {'goog': '2'}
+ *  map    -> './renaming.js' which contains something like module.exports = { someclass: 'a', ... };
  *  then
  *  it will replace all instances of goog with 2 which are between class=" and "
 ```

@@ -1,6 +1,6 @@
 {
   "name": "gulp-replace-frommap",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A tiny gulp plugin for replacing text using a object map",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "streams",
     "gulpfriendly"
   ],
-  "author": "Puranjay Jain <me+gulpjs@puranjayjain.com>",
+  "author": "Puranjay Jain <me+npm@puranjayjain.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/puranjayjain/gulp-replace-frommap/issues"
