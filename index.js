@@ -66,12 +66,12 @@ module.exports = function (options) {
       // put the contents before the first match into the replaced
 
       // go on until the last before match
-      // while(pointer = getIndexOf(filecontents, options.before)) {
+      while(pointer = getIndexOf(filecontents, options.before)) {
         current = filecontents.substr(0, pointer);
-        replaced = replaced.concat(replaced, current);
+        replaced = replaced.concat(current);
         stringSuperman = getStringWithLength(filecontents, options.before);
-        
-        replaced = replaced.concat(replaced, stringSuperman.textValue);
+
+        replaced = replaced.concat(stringSuperman.textValue);
         pointer += stringSuperman.textLength;
 
         // cut them matched text loose
@@ -79,6 +79,15 @@ module.exports = function (options) {
 
         // now look for after
         pointer = getIndexOf(filecontents, options.after);
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log('                   ');
+        gUtil.log(filecontents);
         // if after is not found throw a error and exit
         if(pointer === -1) {
           this.emit('error', new PluginError(PLUGIN_NAME, 'After is not found'));
@@ -89,21 +98,20 @@ module.exports = function (options) {
         current = filecontents.substr(0, pointer);
         // cut off the match part from the original source
         filecontents = filecontents.substr(pointer);
-        current = replaceTextWithMap(current, options.map);
-        gUtil.log(current);
-        replaced = replaced.concat(replaced, current);
+        current = replaceTextWithMap(current, map);
+        replaced = replaced.concat(current);
 
         // now attach the after text
         stringSuperman = getStringWithLength(filecontents, options.after);
-        replaced = replaced.concat(replaced, stringSuperman.textValue);
-        pointer += stringSuperman.textLength;
+        replaced = replaced.concat(stringSuperman.textValue);
+        pointer = stringSuperman.textLength;
 
         // cut them matched text loose
         filecontents = filecontents.substr(pointer);
-      // }
+      }
 
       // write off the last chunk which is left
-      replaced = replaced.concat(replaced, filecontents);
+      replaced = replaced.concat(filecontents);
 
       // write data back to the file
       file.contents = Buffer.from(replaced, encoding);
@@ -151,7 +159,7 @@ module.exports = function (options) {
     for(let token of tokens) {
       // try to replace only if the key exists in the map else skip over
       if(map.hasOwnProperty(token)) {
-        string = replaceAll(map[token], string);
+        string = replaceAll(token, map[token], string);
       }
     }
     return string;
