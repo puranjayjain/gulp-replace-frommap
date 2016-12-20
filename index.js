@@ -14,20 +14,9 @@ let map;
 // consts
 const PLUGIN_NAME = 'gulp-replace-frommap';
 
-// before and after can be regex also
-/**
- *  NOTE replaces text between before and after, so it is assumed that the tags before and after don't overlap ambiguosly and also assuming that both before and after are in the same line or there is trouble coming your way ... big trouble
- *  e.g
- *  NOTE if you are using regex for before and after then wrap them in a group, e.g /class/ should be done as /(class)/
- *  before -> class="
- *  after  -> "
- *  map    -> {'goog': '2'}
- *  then
- *  it will replace all instances of goog with 2 which are between class=" and "
- */
-
 module.exports = function (options) {
   // through2.obj(fn) is a convinient wrapper around through2({ objectMode: true }, fn)
+  // through2 --> stream funcs made consistent *magic*
   return through.obj(function (file, encoding, callback) {
 
     // if file is empty, just do nothing
@@ -66,7 +55,14 @@ module.exports = function (options) {
       // put the contents before the first match into the replaced
 
       // go on until the last before match
-      while(pointer = getIndexOf(filecontents, options.before)) {
+      while(1) {
+        pointer = getIndexOf(filecontents, options.before);
+
+        // exit loop only if invalid pointer
+        if(pointer === -1) {
+          break;
+        }
+
         current = filecontents.substr(0, pointer);
         replaced = replaced.concat(current);
         stringSuperman = getStringWithLength(filecontents, options.before);
@@ -79,15 +75,7 @@ module.exports = function (options) {
 
         // now look for after
         pointer = getIndexOf(filecontents, options.after);
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log('                   ');
-        gUtil.log(filecontents);
+
         // if after is not found throw a error and exit
         if(pointer === -1) {
           this.emit('error', new PluginError(PLUGIN_NAME, 'After is not found'));
