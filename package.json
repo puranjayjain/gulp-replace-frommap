@@ -1,7 +1,7 @@
 {
   "name": "gulp-replace-frommap",
-  "version": "0.1.0",
-  "description": "A tiny gulp plugin for replacing text using a object map",
+  "version": "0.1.1",
+  "description": "A tiny gulp plugin for replacing text using a object map between two regexes or strings",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,5 +1,5 @@
 # gulp-replace-frommap
-A tiny gulp plugin for replacing text using a object map
+A tiny gulp plugin for replacing text using a object map between two regexes or strings
 
 # Usage example
 
