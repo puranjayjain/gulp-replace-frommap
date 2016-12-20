@@ -42,3 +42,4 @@ Its an object to be passed along with the constructor of the plugin
 
 # TODO
  - [ ] streams support
+ - [ ] tests
