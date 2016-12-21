@@ -6,7 +6,7 @@ A tiny gulp plugin for replacing text using a object map between two regexes or 
 ## gulpfile.js
 ```
 var gulp = require('gulp');
-var gulpReplaceFrommap = require('gulp-replace-frommap.js');
+var gulpReplaceFrommap = require('gulp-replace-frommap');
 
 gulp.task('test', function () {
   return gulp.src('src/index.html')
