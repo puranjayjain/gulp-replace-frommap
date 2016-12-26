@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/puranjayjain/gulp-replace-frommap#readme",
   "dependencies": {
-    "gulp-util": "^3.0.7",
+    "gulp-util": "^3.0.8",
     "has-properties": "^1.1.3",
     "replaceall": "^0.1.6",
     "split": "^1.0.0",
