@@ -1,4 +1,6 @@
 # gulp-replace-frommap
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/puranjayjain/gulp-replace-frommap.svg)](https://greenkeeper.io/)
 A tiny gulp plugin for replacing text using a object map between two regexes or strings
 
 # Usage example
